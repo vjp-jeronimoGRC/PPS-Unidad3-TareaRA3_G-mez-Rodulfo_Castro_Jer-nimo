@@ -1,0 +1,11 @@
+site_name: Auditoría de Seguridad - Tarea RA3
+theme:
+  name: material
+
+nav:
+  - Inicio: Index.md
+  - 'Apartado 1': Creación Entorno Prueba/apartado1.md
+  - 'Apartado 2': Actividad - Vulnerabilidades de inyección de datos de entrada/apartado2.md
+  - 'Apartado 3': Gestión Insegura de sesiones/apartado3.md
+  - 'Apartado 4': Errores en la Seguridad y componentes vulnerables/apartado4.md
+  - 'Apartado 5': Análisis estático, dinámico y de dependencia de librerías de aplicación web/apartado5.md

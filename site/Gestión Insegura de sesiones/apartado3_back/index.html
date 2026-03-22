@@ -1,0 +1,624 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4">
+    
+    
+      
+        <title>Apartado3 back - Auditoría de Seguridad - Tarea RA3</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#archivo-auxiliar-mostrar_sesionphp" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Auditoría de Seguridad - Tarea RA3" class="md-header__button md-logo" aria-label="Auditoría de Seguridad - Tarea RA3" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Auditoría de Seguridad - Tarea RA3
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Apartado3 back
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Auditoría de Seguridad - Tarea RA3" class="md-nav__button md-logo" aria-label="Auditoría de Seguridad - Tarea RA3" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Auditoría de Seguridad - Tarea RA3
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Index.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Creaci%C3%B3n%20Entorno%20Prueba/apartado1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Apartado 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Actividad%20-%20Vulnerabilidades%20de%20inyecci%C3%B3n%20de%20datos%20de%20entrada/apartado2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Apartado 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apartado3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Apartado 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Errores%20en%20la%20Seguridad%20y%20componentes%20vulnerables/apartado4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Apartado 4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../An%C3%A1lisis%20est%C3%A1tico%2C%20din%C3%A1mico%20y%20de%20dependencia%20de%20librer%C3%ADas%20de%20aplicaci%C3%B3n%20web/apartado5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Apartado 5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#archivo-auxiliar-mostrar_sesionphp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivo auxiliar mostrar_sesion.php
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codigo-vulnerable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Código vulnerable
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explotacion-de-session-hijacking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explotación de Session Hijacking
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mitigacion-de-problemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mitigación de problemas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prevenir-vulnerabilidades-xss" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prevenir vulnerabilidades XSS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prevenir-vulnerabilidades-session-fixation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prevenir vulnerabilidades Session Fixation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configurar-la-cookie-de-sesion-de-forma-segura-y-tiempo-de-expiracion-de-sesion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configurar la cookie de sesión de forma segura y tiempo de expiración de sesión
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crear-una-lista-blanca-de-servidores-para-bloquear-acceso-desde-hosts-no-permitidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crear una lista blanca de servidores para bloquear acceso desde hosts no permitidos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validar-la-ip-y-user-agent-del-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validar la IP y User-Agent del usuario
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mejoras-de-seguridad-adicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mejoras de seguridad adicionales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mejoras de seguridad adicionales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#habilitar-https-con-ssltls-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      Habilitar HTTPS con SSL/TLS (Apache)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Apartado3 back</h1>
+
+<hr />
+<h3 id="archivo-auxiliar-mostrar_sesionphp">Archivo auxiliar mostrar_sesion.php</h3>
+<p>![[Pasted image 20260307105931.png]]</p>
+<hr />
+<h3 id="codigo-vulnerable">Código vulnerable</h3>
+<p>![[Pasted image 20260307110256.png]]</p>
+<p>![[Pasted image 20260307110419.png]]</p>
+<p>A través del método GET el formulario envía como *http://localhost/sesion.php?user=admin</p>
+<p>![[Pasted image 20260307110512.png]]</p>
+<hr />
+<h3 id="explotacion-de-session-hijacking">Explotación de Session Hijacking</h3>
+<p><strong>Pasos para obtener las <code>Cookies</code> en el navegador</strong></p>
+<p>![[Pasted image 20260307111903.png]]</p>
+<p>Obtención de la cookie de sesión:</p>
+<p>![[Pasted image 20260307112023.png]]</p>
+<p><strong>Ataque detallado: Session Hijacking</strong></p>
+<ol>
+<li>
+<p>El usuario legítimo inicia sesión</p>
+<ol>
+<li>
+<p>El usuario accede a la web y pasa su nombre de usuario en la URL: <a href="http://localhost/session.php?user=admin">http://localhost/session.php?user=admin</a></p>
+</li>
+<li>
+<p>El servidor crea una sesión y almacena la variable: <code>$_SESSION['user'] = 'admin';</code></p>
+</li>
+<li>
+<p>El navegador almacena la cookie de session: <code>PHPSESSID=98817c3a024d55f13e6196cda01543f1;</code></p>
+</li>
+<li>
+<p>Ahora, cada vez que el usuario haga una solicitud, el navegador enviará la cookie: <code>Cookie: PHPSESSID=98817c3a024d55f13e6196cda01543f1</code></p>
+</li>
+</ol>
+</li>
+<li>
+<p>El atacante roba la cookie de sesion:</p>
+</li>
+</ol>
+<p>Método escogido:  <strong>Captura de tráfico (MITM)</strong></p>
+<p>Captura de tráfico:</p>
+<p>![[Pasted image 20260307112559.png]]</p>
+<p>Encontramos entre los datos de la petición la cookie de sesión del usuario:</p>
+<p>![[Pasted image 20260307113007.png]]</p>
+<p>Una vez adquirida la Cookie de sesión:</p>
+<ul>
+<li>Editar cookies en el navegador: Abrir las herramientas de desarrollador (F12 en Chrome):</li>
+</ul>
+<p>![[Pasted image 20260307113749.png]]</p>
+<ul>
+<li>Ir a Application &gt; Storage &gt; Cookies.</li>
+</ul>
+<p>![[Pasted image 20260307114004.png]]</p>
+<ul>
+<li>
+<p>Modificar PHPSESSID y reemplazarlo por el valor robado.
+ ![[Pasted image 20260307114258.png]]</p>
+</li>
+<li>
+<p>Enviar el Session ID en una solicitud.</p>
+</li>
+</ul>
+<p>![[Pasted image 20260307122831.png]]</p>
+<hr />
+<h2 id="mitigacion-de-problemas">Mitigación de problemas</h2>
+<h2 id="prevenir-vulnerabilidades-xss"><strong>Prevenir vulnerabilidades <code>XSS</code></strong></h2>
+<p>Usar <code>htmlspecialchars()</code> siempre que se muestre información del usuario:</p>
+<p>![[Pasted image 20260307123014.png]]</p>
+<h2 id="prevenir-vulnerabilidades-session-fixation"><strong>Prevenir vulnerabilidades <code>Session Fixation</code></strong></h2>
+<p>Lo podemos hacer regenerando el ID de sesión en cada inicio de sesión, además guarda en la sesión el valor recibido por <code>GET['user']</code>, sanitizándolo para evitar ataques XSS (Cross-Site Scripting).</p>
+<p>![[Pasted image 20260307123304.png]]</p>
+<h2 id="configurar-la-cookie-de-sesion-de-forma-segura-y-tiempo-de-expiracion-de-sesion"><strong>Configurar la cookie de sesión de forma segura y tiempo de expiración de sesión</strong></h2>
+<ul>
+<li>La sesión sólo permanece abierta un tiempo determinado.</li>
+<li>Anulamos ejecución de JavaScript</li>
+<li>No permitimos sesion introducida directamente en URL, sólo a través de las cookies</li>
+<li>Sólo funciona en el sitio especificado "pps.edu" no localhost ni ningún otro dominio.</li>
+</ul>
+<p>![[Pasted image 20260307123851.png]]</p>
+<hr />
+<h2 id="crear-una-lista-blanca-de-servidores-para-bloquear-acceso-desde-hosts-no-permitidos">Crear una lista blanca de servidores para bloquear acceso desde hosts no permitidos</h2>
+<p>Modificación por si el host actual no está en la lista no nos deja iniciar la sesión.</p>
+<p>![[Pasted image 20260307124051.png]]</p>
+<hr />
+<h2 id="validar-la-ip-y-user-agent-del-usuario"><strong>Validar la IP y User-Agent del usuario</strong></h2>
+<p>Creación del archivo con todas las modificaciones:</p>
+<p>![[Pasted image 20260307124342.png]]</p>
+<p>![[Pasted image 20260307125031.png]]</p>
+<p>![[Pasted image 20260307125156.png]]</p>
+<hr />
+<h2 id="mejoras-de-seguridad-adicionales">Mejoras de seguridad adicionales</h2>
+<h3 id="habilitar-https-con-ssltls-apache">Habilitar HTTPS con SSL/TLS (Apache)</h3>
+<p>Crear certificados dentro del contenedor php:</p>
+<p>![[Pasted image 20260307130156.png]]</p>
+<p>Creación del documento para la conexión <strong>HTTPS</strong></p>
+<p>![[Pasted image 20260307130434.png]]</p>
+<p>Habilitar módulo <code>SSL</code> y deshabilitar el que teníamos hasta ahora <code>default</code>. Añadir el sitio en <code>/etc/hosts</code></p>
+<p>![[Pasted image 20260307130754.png]]</p>
+<p>![[Pasted image 20260307132355.png]]</p>
+<p>Prueba de seguridad:</p>
+<p>![[Pasted image 20260307131947.png]]</p>
+<p>Observamos que nos verifica la seguridad del sitio.</p>
+<p>![[Pasted image 20260307132450.png]]</p>
+<hr />
+<p>A continuación voy a crear un archivo llamado <code>sesion2.php</code> en este nuevo fichero he añadido:</p>
+<ul>
+<li>Redirigir HTTP a HTTPS</li>
+<li>Configuración de SameSite más estricta</li>
+<li>Control de intentos fallidos (prevención fuerza bruta)</li>
+<li>Cierre seguro de sesión</li>
+<li>Agregar un botón de <code>logout</code> en HTML.</li>
+</ul>
+<p>![[Pasted image 20260307133525.png]]</p>
+<p>![[Pasted image 20260307134148.png]]</p>
+<p>Se muestra el mensaje de sesión cerrado:</p>
+<p>![[Pasted image 20260307134205.png]]</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  </body>
+</html>
