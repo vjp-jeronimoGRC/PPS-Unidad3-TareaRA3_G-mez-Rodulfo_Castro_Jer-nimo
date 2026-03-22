@@ -3,7 +3,7 @@ theme:
   name: material
 
 nav:
-  - Inicio: Index.md
+  - Inicio: index.md
   - 'Apartado 1': Creación Entorno Prueba/apartado1.md
   - 'Apartado 2': Actividad - Vulnerabilidades de inyección de datos de entrada/apartado2.md
   - 'Apartado 3': Gestión Insegura de sesiones/apartado3.md
