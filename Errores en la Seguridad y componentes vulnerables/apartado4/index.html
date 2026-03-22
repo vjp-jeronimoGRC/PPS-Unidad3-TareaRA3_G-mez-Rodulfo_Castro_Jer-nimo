@@ -1,0 +1,1196 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../Gesti%C3%B3n%20Insegura%20de%20sesiones/apartado3/">
+      
+      
+        <link rel="next" href="../../An%C3%A1lisis%20est%C3%A1tico%2C%20din%C3%A1mico%20y%20de%20dependencia%20de%20librer%C3%ADas%20de%20aplicaci%C3%B3n%20web/apartado5/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Apartado 4 - Auditoría de Seguridad - Tarea RA3</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#apartado-4-errores-en-la-seguridad-y-componentes-vulnerables" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Auditoría de Seguridad - Tarea RA3" class="md-header__button md-logo" aria-label="Auditoría de Seguridad - Tarea RA3" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Auditoría de Seguridad - Tarea RA3
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Apartado 4
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Auditoría de Seguridad - Tarea RA3" class="md-nav__button md-logo" aria-label="Auditoría de Seguridad - Tarea RA3" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Auditoría de Seguridad - Tarea RA3
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Creaci%C3%B3n%20Entorno%20Prueba/apartado1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apartado 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Actividad%20-%20Vulnerabilidades%20de%20inyecci%C3%B3n%20de%20datos%20de%20entrada/apartado2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apartado 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Gesti%C3%B3n%20Insegura%20de%20sesiones/apartado3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apartado 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apartado 4
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apartado 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-iniciar-entorno-de-pruebas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Iniciar entorno de pruebas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-instalacion-de-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Instalación de Apache
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-estructura-de-directorios-de-configuracion-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Estructura de directorios de configuración Apache
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-sitios-virtuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Sitios Virtuales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-resolucion-local-de-nombres-dns-o-fichero-etchosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Resolución local de nombres: DNS o fichero /etc/hosts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-creacion-de-un-servidor-virtual-hacker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Creación de un servidor virtual "Hacker"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-habilitar-https-con-ssltls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Habilitar HTTPS con SSL/TLS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Habilitar HTTPS con SSL/TLS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-crear-la-clave-privada-y-el-certificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1: Crear la clave privada y el certificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-configurar-apache-para-usar-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2: Configurar Apache para usar HTTPS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-habilitar-ssl-y-el-sitio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 3: Habilitar SSL y el sitio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-configuracion-de-hosts-y-verificacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 4: Configuración de hosts y verificación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-forzar-https-en-apache2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Forzar HTTPS en Apache2
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Forzar HTTPS en Apache2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-en-defaultconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuración en default.conf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-mediante-htaccess" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuración mediante .htaccess
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-content-security-policy-csp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Content Security Policy (CSP)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-hsts-http-strict-transport-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. HSTS (HTTP Strict Transport Security)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-identificacion-y-correccion-de-security-misconfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Identificación y Corrección de Security Misconfiguration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Identificación y Corrección de Security Misconfiguration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuraciones-inseguras-detectadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuraciones inseguras detectadas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correccion-de-la-configuracion-server-signature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Corrección de la configuración (Server Signature)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ocultar-la-version-de-php-phpini" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ocultar la versión de PHP (php.ini)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-configuracion-de-mod_security-con-owasp-crs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Configuración de mod_security con OWASP CRS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Configuración de mod_security con OWASP CRS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#incorporacion-de-owasp-core-rule-set-crs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Incorporación de OWASP Core Rule Set (CRS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificacion-de-logs-de-bloqueo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificación de logs de bloqueo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-restauracion-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Restauración Final
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../An%C3%A1lisis%20est%C3%A1tico%2C%20din%C3%A1mico%20y%20de%20dependencia%20de%20librer%C3%ADas%20de%20aplicaci%C3%B3n%20web/apartado5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apartado 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-iniciar-entorno-de-pruebas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Iniciar entorno de pruebas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-instalacion-de-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Instalación de Apache
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-estructura-de-directorios-de-configuracion-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Estructura de directorios de configuración Apache
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-sitios-virtuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Sitios Virtuales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-resolucion-local-de-nombres-dns-o-fichero-etchosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Resolución local de nombres: DNS o fichero /etc/hosts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-creacion-de-un-servidor-virtual-hacker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Creación de un servidor virtual "Hacker"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-habilitar-https-con-ssltls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Habilitar HTTPS con SSL/TLS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Habilitar HTTPS con SSL/TLS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-crear-la-clave-privada-y-el-certificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1: Crear la clave privada y el certificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-configurar-apache-para-usar-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2: Configurar Apache para usar HTTPS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-habilitar-ssl-y-el-sitio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 3: Habilitar SSL y el sitio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-configuracion-de-hosts-y-verificacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 4: Configuración de hosts y verificación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-forzar-https-en-apache2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Forzar HTTPS en Apache2
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Forzar HTTPS en Apache2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-en-defaultconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuración en default.conf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-mediante-htaccess" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuración mediante .htaccess
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-content-security-policy-csp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Content Security Policy (CSP)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-hsts-http-strict-transport-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. HSTS (HTTP Strict Transport Security)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-identificacion-y-correccion-de-security-misconfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Identificación y Corrección de Security Misconfiguration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Identificación y Corrección de Security Misconfiguration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuraciones-inseguras-detectadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuraciones inseguras detectadas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correccion-de-la-configuracion-server-signature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Corrección de la configuración (Server Signature)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ocultar-la-version-de-php-phpini" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ocultar la versión de PHP (php.ini)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-configuracion-de-mod_security-con-owasp-crs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Configuración de mod_security con OWASP CRS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Configuración de mod_security con OWASP CRS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#incorporacion-de-owasp-core-rule-set-crs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Incorporación de OWASP Core Rule Set (CRS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificacion-de-logs-de-bloqueo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificación de logs de bloqueo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-restauracion-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Restauración Final
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="apartado-4-errores-en-la-seguridad-y-componentes-vulnerables">Apartado 4 - Errores en la Seguridad y Componentes Vulnerables</h1>
+<h2 id="1-iniciar-entorno-de-pruebas">1. Iniciar entorno de pruebas</h2>
+<p>Ejecución del script para restaurar a la configuración original:
+<img alt="Restaurar Entorno" src="../img/Pasted%20image%2020260219181734.png" /></p>
+<p>Se inicia el escenario multicontenedor:
+<img alt="Escenario Docker" src="../img/Pasted%20image%2020260219182132.png" /></p>
+<hr />
+<h2 id="2-instalacion-de-apache">2. Instalación de Apache</h2>
+<p>Entramos en el contenedor:
+<img alt="Acceso Contenedor" src="../img/Pasted%20image%2020260219182452.png" /></p>
+<p>Hacemos la instalación de <code>apache2</code>:
+<img alt="Instalar Apache" src="../img/Pasted%20image%2020260219182812.png" /></p>
+<hr />
+<h2 id="3-estructura-de-directorios-de-configuracion-apache">3. Estructura de directorios de configuración Apache</h2>
+<p>Visualización de la estructura de configuración:
+<img alt="Estructura 1" src="../img/Pasted%20image%2020260219183407.png" />
+<img alt="Estructura 2" src="../img/Pasted%20image%2020260219183431.png" />
+<img alt="Estructura 3" src="../img/Pasted%20image%2020260219183455.png" /></p>
+<p>Vemos los módulos instalados y habilitados:
+<img alt="Modulos Instalados" src="../img/Pasted%20image%2020260219184406.png" />
+<img alt="Modulos Habilitados" src="../img/Pasted%20image%2020260219185134.png" /></p>
+<hr />
+<h2 id="4-sitios-virtuales">4. Sitios Virtuales</h2>
+<p>Modificamos el archivo <code>/etc/apache2/sites-available/default.conf</code>:
+<img alt="Config Sitio 1" src="../img/Pasted%20image%2020260219185358.png" />
+<img alt="Config Sitio 2" src="../img/Pasted%20image%2020260219190716.png" /></p>
+<p>Verificamos que Apache reconoce el sitio:
+<img alt="Reconocimiento Sitio" src="../img/Pasted%20image%2020260219191001.png" /></p>
+<p>Cambio de propietarios y de los permisos del directorio web:
+<img alt="Permisos" src="../img/Pasted%20image%2020260219191754.png" /></p>
+<p>Visualizamos la página en el navegador:
+<img alt="Navegador Web" src="../img/Pasted%20image%2020260219192420.png" /></p>
+<hr />
+<h2 id="5-resolucion-local-de-nombres-dns-o-fichero-etchosts">5. Resolución local de nombres: DNS o fichero /etc/hosts</h2>
+<p>Cambiamos el nombre del host y consultamos la IP del contenedor:
+<img alt="Nombre Host" src="../img/Pasted%20image%2020260219200557.png" />
+<img alt="IP Contenedor" src="../img/Pasted%20image%2020260219193145.png" /></p>
+<p>Reiniciamos el servicio Apache:
+<img alt="Reinicio Apache 1" src="../img/Pasted%20image%2020260219201007.png" />
+<img alt="Reinicio Apache 2" src="../img/Pasted%20image%2020260219200713.png" /></p>
+<p>Resultado en el navegador usando el nombre de host:
+<img alt="Navegador Host" src="../img/Pasted%20image%2020260219202128.png" /></p>
+<hr />
+<h2 id="6-creacion-de-un-servidor-virtual-hacker">6. Creación de un servidor virtual "Hacker"</h2>
+<p>Creación de la subcarpeta y configuración del sitio:
+<img alt="Carpeta Hacker" src="../img/Pasted%20image%2020260219202656.png" />
+<img alt="Index Hacker" src="../img/Pasted%20image%2020260219202949.png" />
+<img alt="Config Hacker" src="../img/Pasted%20image%2020260219203509.png" /></p>
+<p>Recargamos Apache y modificamos el servidor:
+<img alt="Recarga Apache" src="../img/Pasted%20image%2020260219203623.png" />
+<img alt="Mod Host" src="../img/Pasted%20image%2020260219204856.png" /></p>
+<p>Acceso desde el navegador:
+<img alt="Web Hacker" src="../img/Pasted%20image%2020260219205113.png" /></p>
+<hr />
+<h2 id="7-habilitar-https-con-ssltls">7. Habilitar HTTPS con SSL/TLS</h2>
+<h3 id="paso-1-crear-la-clave-privada-y-el-certificado">Paso 1: Crear la clave privada y el certificado</h3>
+<p><img alt="Crear SSL" src="../img/Pasted%20image%2020260220093920.png" />
+<img alt="Ver Certificados" src="../img/Pasted%20image%2020260220094048.png" /></p>
+<h3 id="paso-2-configurar-apache-para-usar-https">Paso 2: Configurar Apache para usar HTTPS</h3>
+<p><img alt="Config SSL" src="../img/Pasted%20image%2020260220094259.png" /></p>
+<h3 id="paso-3-habilitar-ssl-y-el-sitio">Paso 3: Habilitar SSL y el sitio</h3>
+<p><img alt="Habilitar SSL" src="../img/Pasted%20image%2020260220094450.png" /></p>
+<h3 id="paso-4-configuracion-de-hosts-y-verificacion">Paso 4: Configuración de hosts y verificación</h3>
+<p><img alt="Hosts SSL" src="../img/Pasted%20image%2020260220095224.png" />
+<img alt="HTTPS OK" src="../img/Pasted%20image%2020260220095352.png" /></p>
+<hr />
+<h2 id="8-forzar-https-en-apache2">8. Forzar HTTPS en Apache2</h2>
+<h3 id="configuracion-en-defaultconf">Configuración en default.conf</h3>
+<p>Modificamos el archivo para redirigir tráfico al puerto 443:
+<img alt="Forzar HTTPS 1" src="../img/Pasted%20image%2020260220112110.png" />
+<img alt="Forzar HTTPS 2" src="../img/Pasted%20image%2020260220112200.png" /></p>
+<h3 id="configuracion-mediante-htaccess">Configuración mediante .htaccess</h3>
+<p><img alt="Config htaccess 1" src="../img/Pasted%20image%2020260220113234.png" />
+<img alt="Config htaccess 2" src="../img/Pasted%20image%2020260220113839.png" /></p>
+<hr />
+<h2 id="9-content-security-policy-csp">9. Content Security Policy (CSP)</h2>
+<p>Implementación de cabeceras de seguridad CSP:
+<img alt="CSP" src="../img/Pasted%20image%2020260220114830.png" /></p>
+<hr />
+<h2 id="10-hsts-http-strict-transport-security">10. HSTS (HTTP Strict Transport Security)</h2>
+<p>Configuración de seguridad extra recomendada:
+<img alt="HSTS" src="../img/Pasted%20image%2020260220115833.png" /></p>
+<hr />
+<h2 id="11-identificacion-y-correccion-de-security-misconfiguration">11. Identificación y Corrección de Security Misconfiguration</h2>
+<h3 id="configuraciones-inseguras-detectadas">Configuraciones inseguras detectadas</h3>
+<p><img alt="Inseguro" src="../img/Pasted%20image%2020260220120110.png" /></p>
+<h3 id="correccion-de-la-configuracion-server-signature">Corrección de la configuración (Server Signature)</h3>
+<p>Ocultamos la versión del servidor:
+<img alt="Server Fix 1" src="../img/Pasted%20image%2020260220120632.png" />
+<img alt="Server Fix 2" src="../img/Pasted%20image%2020260220120806.png" /></p>
+<h3 id="ocultar-la-version-de-php-phpini">Ocultar la versión de PHP (php.ini)</h3>
+<p><img alt="PHP Fix 1" src="../img/Pasted%20image%2020260220121847.png" />
+<img alt="PHP Fix 2" src="../img/Pasted%20image%2020260220121812.png" />
+<img alt="PHP Fix 3" src="../img/Pasted%20image%2020260220122212.png" />
+<img alt="PHP Fix 4" src="../img/Pasted%20image%2020260220122315.png" /></p>
+<hr />
+<h2 id="12-configuracion-de-mod_security-con-owasp-crs">12. Configuración de mod_security con OWASP CRS</h2>
+<p>Pruebas previas de Inyección SQL y XSS:
+<img alt="Test SQLi" src="../img/Pasted%20image%2020260304121112.png" />
+<img alt="Test XSS" src="../img/Pasted%20image%2020260304121147.png" /></p>
+<p>Instalación y configuración de ModSecurity:
+<img alt="Instalar ModSec" src="../img/Pasted%20image%2020260304121411.png" />
+<img alt="Config ModSec" src="../img/Pasted%20image%2020260304121611.png" />
+<img alt="Recarga ModSec" src="../img/Pasted%20image%2020260304121831.png" />
+<img alt="Carga ModSec" src="../img/Pasted%20image%2020260304121909.png" /></p>
+<h3 id="incorporacion-de-owasp-core-rule-set-crs">Incorporación de OWASP Core Rule Set (CRS)</h3>
+<p>Clonación e inclusión de reglas:
+<img alt="Clonar CRS" src="../img/Pasted%20image%2020260304122205.png" />
+<img alt="Incluir CRS" src="../img/Pasted%20image%2020260304122407.png" />
+<img alt="Verificar CRS" src="../img/Pasted%20image%2020260304122443.png" />
+<img alt="Config Extra CRS" src="../img/Pasted%20image%2020260304122538.png" /></p>
+<h3 id="verificacion-de-logs-de-bloqueo">Verificación de logs de bloqueo</h3>
+<p><img alt="Logs ModSec" src="../img/Pasted%20image%2020260304131422.png" /></p>
+<hr />
+<h2 id="13-restauracion-final">13. Restauración Final</h2>
+<p>Desinstalación de módulos y limpieza para dejar el entorno original:
+<img alt="Limpieza 1" src="../img/Pasted%20image%2020260304131710.png" />
+<img alt="Limpieza 2" src="../img/Pasted%20image%2020260304131728.png" />
+<img alt="Limpieza 3" src="../img/Pasted%20image%2020260304132011.png" />
+<img alt="Limpieza 4" src="../img/Pasted%20image%2020260304132049.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

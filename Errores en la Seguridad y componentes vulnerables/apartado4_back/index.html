@@ -1,0 +1,885 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Apartado4 back - Auditoría de Seguridad - Tarea RA3</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#iniciar-entorno-de-pruebas" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Auditoría de Seguridad - Tarea RA3" class="md-header__button md-logo" aria-label="Auditoría de Seguridad - Tarea RA3" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Auditoría de Seguridad - Tarea RA3
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Apartado4 back
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Auditoría de Seguridad - Tarea RA3" class="md-nav__button md-logo" aria-label="Auditoría de Seguridad - Tarea RA3" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Auditoría de Seguridad - Tarea RA3
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Creaci%C3%B3n%20Entorno%20Prueba/apartado1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apartado 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Actividad%20-%20Vulnerabilidades%20de%20inyecci%C3%B3n%20de%20datos%20de%20entrada/apartado2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apartado 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Gesti%C3%B3n%20Insegura%20de%20sesiones/apartado3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apartado 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apartado4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apartado 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../An%C3%A1lisis%20est%C3%A1tico%2C%20din%C3%A1mico%20y%20de%20dependencia%20de%20librer%C3%ADas%20de%20aplicaci%C3%B3n%20web/apartado5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apartado 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#iniciar-entorno-de-pruebas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Iniciar entorno de pruebas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-instalacion-de-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Instalación de Apache
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-estructura-de-directorios-de-configuracion-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Estructura de directorios de configuración Apache
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-sitios-virtuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Sitios Virtuales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-resolucion-local-de-nombres-dns-o-fichero-etchosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Resolución local de nombres: dns o fichero /etc/hosts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-creacion-de-un-servidor-virtual-hacker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Creación de un servidor virtual Hacker
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-como-habilitar-https-con-ssltls-en-servidor-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Cómo habilitar HTTPS con SSL/TLS en Servidor Apache
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-1-crear-la-clave-privada-y-el-certificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1: Crear la clave privada y el certificado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-2configurar-apache-para-usar-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2.Configurar Apache para usar HTTPS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-3-habilitar-ssl-y-el-sitio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 3: Habilitar SSL y el sitio:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-4-poner-direccion-en-etchosts-o-habilitar-puerto-443" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 4: Poner dirección en /etc/hosts o habilitar puerto 443
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8forzar-https-en-apache2-defaultconf-y-htaccess" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.Forzar HTTPS en Apache2 (default.conf y .htaccess)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.Forzar HTTPS en Apache2 (default.conf y .htaccess)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configuracion-en-defaultconf-archivo-de-configuracion-de-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Configuración en default.conf (archivo de configuración de Apache)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configuracion-en-htaccess" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configuración en .htaccess
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-implementacion-y-evaluacion-de-content-security-policy-csp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Implementación y Evaluación de Content Security Policy (CSP)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-nota-de-seguridad-extra-hsts-opcional-pero-recomendado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Nota de seguridad extra: HSTS (opcional pero recomendado)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-identificacion-y-correccion-de-security-misconfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Identificación y Corrección de Security Misconfiguration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Identificación y Corrección de Security Misconfiguration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuraciones-inseguras" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuraciones inseguras
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#corregir-la-configuracion-del-servidor-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Corregir la configuración del servidor Apache
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Corregir la configuración del servidor Apache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ocultar-la-version-de-php-phpini" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ocultar la versión de PHP (php.ini)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-configuracion-de-mod_security-con-reglas-owasp-crs-en-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Configuración de mod_security con reglas OWASP CRS en Apache.
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Configuración de mod_security con reglas OWASP CRS en Apache.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descargar-owasp-modsecurity-core-rule-set-crs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Descargar OWASP ModSecurity Core Rule Set (CRS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incluir-las-reglas-owasp-en-la-configuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Incluir las reglas OWASP en la configuración
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ver-logs-de-modsecurity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ver logs de ModSecurity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#volver-a-dejar-todo-niquelao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Volver a dejar todo "niquelao"
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Apartado4 back</h1>
+
+<hr />
+<h2 id="iniciar-entorno-de-pruebas">Iniciar entorno de pruebas</h2>
+<p>Ejecución del script para restaurar a la configuración original</p>
+<p>![[Pasted image 20260219181734.png]]</p>
+<p>Se inicia el escenario multicontenedor:</p>
+<p>![[Pasted image 20260219182132.png]]</p>
+<hr />
+<h2 id="2-instalacion-de-apache">2. Instalación de Apache</h2>
+<p>Entramos en el contenedor:</p>
+<p>![[Pasted image 20260219182452.png]]</p>
+<p>Hacemos la instalación de <code>apache</code>:</p>
+<p>![[Pasted image 20260219182812.png]]</p>
+<hr />
+<h2 id="3-estructura-de-directorios-de-configuracion-apache">3. Estructura de directorios de configuración Apache</h2>
+<p>![[Pasted image 20260219183407.png]]![[Pasted image 20260219183431.png]]</p>
+<p>![[Pasted image 20260219183455.png]]</p>
+<p>Vemos los módulos instalados:</p>
+<p>![[Pasted image 20260219184406.png]]</p>
+<p>Visualizamos los módulos habilitados:</p>
+<p>![[Pasted image 20260219185134.png]]</p>
+<hr />
+<h2 id="4-sitios-virtuales">4. Sitios Virtuales</h2>
+<p>Modificamos el el archivo<code>/etc/apache2/sites-available/default.conf</code>:</p>
+<p>![[Pasted image 20260219185358.png]]
+![[Pasted image 20260219190716.png]]</p>
+<p>Podemos observar que el sitio ya lo reconoce Apache:</p>
+<p>![[Pasted image 20260219191001.png]]</p>
+<p>Cambio de propietarios y de los permisos:</p>
+<p>![[Pasted image 20260219191754.png]]</p>
+<p>Visualizamos la página:</p>
+<p>![[Pasted image 20260219192420.png]]</p>
+<hr />
+<h2 id="5-resolucion-local-de-nombres-dns-o-fichero-etchosts">5. Resolución local de nombres: dns o fichero <strong>/etc/hosts</strong></h2>
+<p>Cambiamos el nombre del host:</p>
+<p>![[Pasted image 20260219200557.png]]</p>
+<p>Consultamos la dirección IP del contenedor:</p>
+<p>![[Pasted image 20260219193145.png]]</p>
+<p>Reiniciamos el servicio Apache:</p>
+<p>![[Pasted image 20260219201007.png]]</p>
+<p>![[Pasted image 20260219200713.png]]</p>
+<p>Salida en el navegador:</p>
+<p>![[Pasted image 20260219202128.png]]</p>
+<hr />
+<h2 id="6-creacion-de-un-servidor-virtual-hacker">6. Creación de un servidor virtual <strong>Hacker</strong></h2>
+<p>Creación de la subcarpeta <em>hacker</em>:</p>
+<p>![[Pasted image 20260219202656.png]]</p>
+<p>![[Pasted image 20260219202949.png]]</p>
+<p>Creación del archivo de configuración del sitio:</p>
+<p>![[Pasted image 20260219203509.png]]</p>
+<p>Recargamos el servicio apache:</p>
+<p>![[Pasted image 20260219203623.png]]</p>
+<p>Modificación de la dirección del servidor:</p>
+<p>![[Pasted image 20260219204856.png]]</p>
+<p>Accedemos por el navegador:</p>
+<p>![[Pasted image 20260219205113.png]]</p>
+<hr />
+<h2 id="7-como-habilitar-https-con-ssltls-en-servidor-apache">7. Cómo habilitar HTTPS con SSL/TLS en Servidor Apache</h2>
+<h2 id="paso-1-crear-la-clave-privada-y-el-certificado"><strong>Paso 1: Crear la clave privada y el certificado</strong></h2>
+<p>![[Pasted image 20260220093920.png]]</p>
+<p>Visualizamos la creación del certificado y la clave pública:</p>
+<p>![[Pasted image 20260220094048.png]]</p>
+<h2 id="paso-2configurar-apache-para-usar-https"><strong>Paso 2.Configurar Apache para usar HTTPS</strong></h2>
+<p>![[Pasted image 20260220094259.png]]</p>
+<h2 id="paso-3-habilitar-ssl-y-el-sitio"><strong>Paso 3: Habilitar SSL y el sitio:</strong></h2>
+<p>![[Pasted image 20260220094450.png]]</p>
+<h2 id="paso-4-poner-direccion-en-etchosts-o-habilitar-puerto-443">Paso 4: Poner <strong>dirección en /etc/hosts o habilitar puerto 443</strong></h2>
+<p>![[Pasted image 20260220095224.png]]</p>
+<p>![[Pasted image 20260220095352.png]]</p>
+<hr />
+<h2 id="8forzar-https-en-apache2-defaultconf-y-htaccess">8.Forzar HTTPS en Apache2 (default.conf y .htaccess)</h2>
+<p>Opción escogida:</p>
+<p><strong>Mediante la configuración de apache en la configuración del sitio</strong></p>
+<h4 id="1-configuracion-en-defaultconf-archivo-de-configuracion-de-apache">1. Configuración en <code>default.conf</code> (archivo de configuración de Apache)</h4>
+<p>Modificamos el archivo <code>default.conf</code>:</p>
+<p>![[Pasted image 20260220112110.png]]</p>
+<p>Reiniciamos el Apache:</p>
+<p>![[Pasted image 20260220112200.png]]</p>
+<h4 id="2-configuracion-en-htaccess">2. Configuración en <code>.htaccess</code></h4>
+<p>Modificamos el <code>default.conf</code>:</p>
+<p>![[Pasted image 20260220113234.png]]</p>
+<p>Creación del archivo <code>.htaccess</code>:</p>
+<p>![[Pasted image 20260220113839.png]]</p>
+<hr />
+<h2 id="9-implementacion-y-evaluacion-de-content-security-policy-csp">9. Implementación y Evaluación de Content Security Policy (CSP)</h2>
+<p>![[Pasted image 20260220114830.png]]</p>
+<hr />
+<h2 id="10-nota-de-seguridad-extra-hsts-opcional-pero-recomendado">10. Nota de seguridad extra: HSTS (opcional pero recomendado)</h2>
+<p>![[Pasted image 20260220115833.png]]</p>
+<hr />
+<h2 id="11-identificacion-y-correccion-de-security-misconfiguration">11. Identificación y Corrección de Security Misconfiguration</h2>
+<h4 id="configuraciones-inseguras">Configuraciones inseguras</h4>
+<p>![[Pasted image 20260220120110.png]]</p>
+<h3 id="corregir-la-configuracion-del-servidor-apache">Corregir la configuración del servidor Apache</h3>
+<p>![[Pasted image 20260220120632.png]]</p>
+<p>No aparece la versión del servidor Apache.</p>
+<p>![[Pasted image 20260220120806.png]]</p>
+<h4 id="ocultar-la-version-de-php-phpini">Ocultar la versión de PHP (php.ini)</h4>
+<p>![[Pasted image 20260220121847.png]]</p>
+<p>![[Pasted image 20260220121812.png]]</p>
+<p>![[Pasted image 20260220122212.png]]</p>
+<p>![[Pasted image 20260220122315.png]]</p>
+<hr />
+<h2 id="10-configuracion-de-mod_security-con-reglas-owasp-crs-en-apache">10. Configuración de <code>mod_security</code> con reglas OWASP CRS en Apache.</h2>
+<p><strong>Inyección SQL</strong></p>
+<p>![[Pasted image 20260304121112.png]]</p>
+<p><strong>XSS</strong></p>
+<p>![[Pasted image 20260304121147.png]]</p>
+<p>Cortafuegos <code>mod_security</code> </p>
+<p>![[Pasted image 20260304121411.png]]</p>
+<p>Fichero de configuración de <code>modsecurity.conf</code></p>
+<p>![[Pasted image 20260304121611.png]]</p>
+<p>Guarda y recarga el servicio Apache:</p>
+<p>![[Pasted image 20260304121831.png]]</p>
+<p>Verifica que <code>mod_security</code> esté cargado:</p>
+<p>![[Pasted image 20260304121909.png]]</p>
+<hr />
+<h3 id="descargar-owasp-modsecurity-core-rule-set-crs">Descargar OWASP ModSecurity Core Rule Set (CRS)</h3>
+<p>Para incorporar las reglas CRS de OWASP a <code>mod_security</code> clonamos el repositorio y copiamos el archivo de configuración.</p>
+<p>![[Pasted image 20260304122205.png]]</p>
+<h3 id="incluir-las-reglas-owasp-en-la-configuracion">Incluir las reglas OWASP en la configuración</h3>
+<p>![[Pasted image 20260304122407.png]]</p>
+<p>Para comprobar si están añadidas las reglas de modsecurity-crs, puedes hacer:</p>
+<p>![[Pasted image 20260304122443.png]]</p>
+<p><strong>IMPORTANTE¡¡ Solo en el caso de que no te aparezcan cargados los módulos</strong>, edita el archivo de configuración de Apache para que cargue las reglas. Puedes hacer esto en un archivo <code>.conf</code> dentro de <code>/etc/apache2/conf-available/</code>:</p>
+<p>![[Pasted image 20260304122538.png]]</p>
+<p>Luego, habilita el archivo de configuración y reinicia el servicio:</p>
+<hr />
+<h3 id="ver-logs-de-modsecurity">Ver logs de ModSecurity</h3>
+<p>![[Pasted image 20260304131422.png]]</p>
+<hr />
+<h2 id="volver-a-dejar-todo-niquelao">Volver a dejar todo "niquelao"</h2>
+<p>Desinstalamos Modsecurity y elimanos las reglas de ModSecurity:</p>
+<p>![[Pasted image 20260304131710.png]]</p>
+<p>![[Pasted image 20260304131728.png]]</p>
+<p><strong>GUARDANDO LOS CAMBIOS</strong></p>
+<p>![[Pasted image 20260304132011.png]]</p>
+<p>![[Pasted image 20260304132049.png]]</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
