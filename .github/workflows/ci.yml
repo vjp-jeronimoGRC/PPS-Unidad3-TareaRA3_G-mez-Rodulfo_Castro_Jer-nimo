@@ -2,7 +2,7 @@ name: ci
 on:
   push:
     branches:
-      - main  # O la rama que uses por defecto
+      - main
 permissions:
   contents: write
 jobs:
